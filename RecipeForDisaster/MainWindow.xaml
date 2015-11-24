@@ -1,8 +1,28 @@
-﻿<Window x:Class="RecipeForDisaster.MainWindow"
+﻿<Window x:Name="Recipe4DisasterForm" x:Class="RecipeForDisaster.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="MainWindow" Height="710" Width="808">
+    <Grid Margin="0,0,2,-5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="514*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="Recipe4DisasterLabel" Content="Recipe Title:" HorizontalAlignment="Left" Margin="277,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.105,-0.231" Width="95" Height="26"/>
+        <Label x:Name="YieldLabel" Content="Yield:" HorizontalAlignment="Left" Margin="277,77,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
+        <TextBox x:Name="YieldValueTextBox" HorizontalAlignment="Left" Height="23" Margin="393,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True"/>
+        <Label x:Name="ServingSizeLabel" Content="Serving Size:" HorizontalAlignment="Left" Margin="277,157,0,0" VerticalAlignment="Top" Height="26" Width="84"/>
+        <TextBox x:Name="RecipeTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="393,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True"/>
+        <TextBox x:Name="ServingSizeTextBox" HorizontalAlignment="Left" Height="94" Margin="393,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" IsEnabled="False" IsReadOnly="True"/>
+        <Label x:Name="RecipeListLabel" Content="Recipes:" HorizontalAlignment="Left" Margin="38,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.553,1.538" Height="26" Width="53"/>
+        <ListBox x:Name="recipeListBox" HorizontalAlignment="Left" Height="537" Margin="38,47,0,0" VerticalAlignment="Top" Width="205"/>
+        <Label x:Name="DirectionLabel" Content="Directions:" HorizontalAlignment="Left" Margin="287,305,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+        <TextBox x:Name="DirectionsTextBox" Height="166" Margin="393,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348"/>
+        <Label x:Name="CommentLabel" Content="Comment:" HorizontalAlignment="Left" Margin="277,453,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+        <TextBox x:Name="CommentTextBox" Height="84" Margin="393,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348"/>
+        <Label x:Name="IngredientsLabel" Content="Ingredients:" HorizontalAlignment="Left" Margin="277,548,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+        <TextBox x:Name="IngredientsTextBox" Height="84" Margin="393,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348"/>
+        <Label x:Name="RecipeTypeLabel" Content="Recipe Type:" HorizontalAlignment="Left" Margin="277,631,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+        <TextBox x:Name="RecipeTypeTextBox" HorizontalAlignment="Left" Height="23" Margin="393,634,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True"/>
+
     </Grid>
 </Window>
