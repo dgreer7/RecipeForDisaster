@@ -22,6 +22,10 @@ namespace RecipeForDisaster
     /// </summary>
     public partial class MainWindow : Window
     {
+        RecipeOrganizerEntities Recipes = new RecipeOrganizerEntities();
+       
+        
+
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
         [DllImport("user32.dll", SetLastError = true)]
@@ -29,37 +33,37 @@ namespace RecipeForDisaster
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
-        Recipe recipe1 = new Recipe()
-        {
-            RecipeName = "Lasagna",
-            Yield = "4 People",
-            Comments = "Something goes here",
-            Directions = "Don't burn it",
-            ListOfIngredients = "Pasta things",
-            RecipeType = "Italian",
-            ServingSize = "4oz"
-        };
+        //Recipe recipe1 = new Recipe()
+        //{
+        //    RecipeName = "Lasagna",
+        //    Yield = "4 People",
+        //    Comments = "Something goes here",
+        //    Directions = "Don't burn it",
+        //    ListOfIngredients = "Pasta things",
+        //    RecipeType = "Italian",
+        //    ServingSize = "4oz"
+        //};
 
-        Recipe recipe2 = new Recipe()
-        {
-            RecipeName = "Pasta",
-            Yield = "3 Dragons",
-            Comments = "Nothing",
-            Directions = "Go Left",
-            ListOfIngredients = "Noodles",
-            RecipeType = "Greek",
-            ServingSize = "50oz"
-        };
+        //Recipe recipe2 = new Recipe()
+        //{
+        //    RecipeName = "Pasta",
+        //    Yield = "3 Dragons",
+        //    Comments = "Nothing",
+        //    Directions = "Go Left",
+        //    ListOfIngredients = "Noodles",
+        //    RecipeType = "Greek",
+        //    ServingSize = "50oz"
+        //};
 
         public MainWindow()
         {
             try
             {
                 InitializeComponent();
+                
 
-
-                recipeListBox.Items.Add(recipe1.RecipeName);
-                recipeListBox.Items.Add(recipe2.RecipeName);
+                //recipeListBox.Items.Add(recipe1.RecipeName);
+                //recipeListBox.Items.Add(recipe2.RecipeName);
             }
             catch (Exception ex)
             {
@@ -72,21 +76,21 @@ namespace RecipeForDisaster
 
         private void DisplayRecipe()
         {
-            Recipe recipeToDisplay;
-            if (recipeListBox.SelectedItem == recipe1.RecipeName)
-            {
-                recipeToDisplay = recipe1;
-            }
-            else
-            recipeToDisplay = recipe2;
+            //Recipe recipeToDisplay;
+            //if (recipeListBox.SelectedItem == recipe1.RecipeName)
+            //{
+            //    recipeToDisplay = recipe1;
+            //}
+            //else
+            //recipeToDisplay = recipe2;
 
-            RecipeTitleTextBox.Text = recipeToDisplay.RecipeName;
-            YieldValueTextBox.Text = recipeToDisplay.Yield;
-            CommentTextBox.Text = recipeToDisplay.Comments;
-            DirectionsTextBox.Text = recipeToDisplay.Directions;
-            IngredientsTextBox.Text = recipeToDisplay.ListOfIngredients;
-            RecipeTypeTextBox.Text = recipeToDisplay.RecipeType;
-            ServingSizeTextBox.Text = recipeToDisplay.ServingSize;
+            //RecipeTitleTextBox.Text = recipeToDisplay.RecipeName;
+            //YieldValueTextBox.Text = recipeToDisplay.Yield;
+            //CommentTextBox.Text = recipeToDisplay.Comments;
+            //DirectionsTextBox.Text = recipeToDisplay.Directions;
+            //IngredientsTextBox.Text = recipeToDisplay.ListOfIngredients;
+            //RecipeTypeTextBox.Text = recipeToDisplay.RecipeType;
+            //ServingSizeTextBox.Text = recipeToDisplay.ServingSize;
         }
 
         private void ClearTextBoxes(Visual myMainWindow)
