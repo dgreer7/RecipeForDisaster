@@ -1,19 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Finder;
 
 namespace RecipeForDisaster
 {
@@ -22,10 +17,10 @@ namespace RecipeForDisaster
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Recipe> MasterRecipesList = new List<Recipe>();
+
         RecipeOrganizerEntities Recipes = new RecipeOrganizerEntities();
        
-        
-
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
         [DllImport("user32.dll", SetLastError = true)]
@@ -33,39 +28,15 @@ namespace RecipeForDisaster
         [DllImport("user32.dll")]
         private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
 
-        //Recipe recipe1 = new Recipe()
-        //{
-        //    RecipeName = "Lasagna",
-        //    Yield = "4 People",
-        //    Comments = "Something goes here",
-        //    Directions = "Don't burn it",
-        //    ListOfIngredients = "Pasta things",
-        //    RecipeType = "Italian",
-        //    ServingSize = "4oz"
-        //};
-
-        //Recipe recipe2 = new Recipe()
-        //{
-        //    RecipeName = "Pasta",
-        //    Yield = "3 Dragons",
-        //    Comments = "Nothing",
-        //    Directions = "Go Left",
-        //    ListOfIngredients = "Noodles",
-        //    RecipeType = "Greek",
-        //    ServingSize = "50oz"
-        //};
-
         public MainWindow()
         {
             try
             {
                 InitializeComponent();
-                List<string> recipeTitles = (from rec in Recipes.Recipes
-                                             select rec.Title).ToList();
+                CreateMasterList();
+                List<string> recipeTitles = (from rec in MasterRecipesList
+                    select rec.Title).ToList();
                 recipeListBox.DataContext = recipeTitles;
-
-                //recipeListBox.Items.Add(recipe1.RecipeName);
-                //recipeListBox.Items.Add(recipe2.RecipeName);
             }
             catch (Exception ex)
             {
@@ -73,26 +44,34 @@ namespace RecipeForDisaster
                 messageTextBox.Visibility = Visibility.Visible;
                 messageTextBox.Text = ex.Message;
             }
-            
+
         }
 
-        private void DisplayRecipe()
+        private void CreateMasterList()
         {
-            //Recipe recipeToDisplay;
-            //if (recipeListBox.SelectedItem == recipe1.RecipeName)
-            //{
-            //    recipeToDisplay = recipe1;
-            //}
-            //else
-            //recipeToDisplay = recipe2;
+            MasterRecipesList = (from rec in Recipes.Recipes
+                select rec).ToList();
+        }
 
-            //RecipeTitleTextBox.Text = recipeToDisplay.RecipeName;
-            //YieldValueTextBox.Text = recipeToDisplay.Yield;
-            //CommentTextBox.Text = recipeToDisplay.Comments;
-            //DirectionsTextBox.Text = recipeToDisplay.Directions;
-            //IngredientsTextBox.Text = recipeToDisplay.ListOfIngredients;
-            //RecipeTypeTextBox.Text = recipeToDisplay.RecipeType;
-            //ServingSizeTextBox.Text = recipeToDisplay.ServingSize;
+        private void DisplayRecipe(string title)
+        {
+            Recipe recipe = (from rec in MasterRecipesList
+                             where rec.Title == title
+                                    select rec).First();
+            
+            StringBuilder ingredients = new StringBuilder();
+            foreach (Ingredient ingred in recipe.Ingredients)
+            {
+                ingredients.AppendLine(ingred.Ingredient1);
+            }
+           
+            RecipeTitleTextBox.Text = recipe.Title;
+            YieldValueTextBox.Text = recipe.Yield;
+            CommentTextBox.Text = recipe.Comment;
+            DirectionsTextBox.Text = recipe.Directions;
+            IngredientsTextBox.Text = ingredients.ToString();
+            RecipeTypeTextBox.Text = recipe.RecipeType;
+            ServingSizeTextBox.Text = recipe.ServingSize;
         }
 
         private void ClearTextBoxes(Visual myMainWindow)
@@ -125,7 +104,7 @@ namespace RecipeForDisaster
 
         private void recipeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayRecipe();
+            DisplayRecipe(recipeListBox.SelectedItem.ToString());
         }
 
         private void Recipe4DisasterForm_Loaded(object sender, RoutedEventArgs e)
@@ -141,6 +120,23 @@ namespace RecipeForDisaster
             MessageLabel.Visibility = Visibility.Visible;
         }
 
-
-    }
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            Find findObj = new Find();
+            SearchWindow searchWindow = new SearchWindow();
+            if (searchWindow.ShowDialog() == true)
+            {
+                foreach (var recipe in MasterRecipesList)
+                {
+                    string recipeString;
+                    List<string> keywords = new List<string>();
+                    string rawtext = searchWindow.RequestKeywords;
+                    keywords = rawtext.Split(',').ToList();
+                    RecipeToString recipeToString = new RecipeToString();
+                    recipeString = recipeToString.Convert(recipe);
+                    //findObj.KeywordMatcher(, recipeString);
+                }
+            }
+         }
+     }
 }

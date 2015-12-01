@@ -3,35 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MainWindow" Height="949" Width="810" Loaded="Recipe4DisasterForm_Loaded">
     <ScrollViewer>
-    <Grid Margin="0,0,2,-5" ScrollViewer.VerticalScrollBarVisibility="Auto">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="321*"/>
-            <ColumnDefinition Width="27*"/>
-            <ColumnDefinition Width="448*"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-        <Label x:Name="Recipe4DisasterLabel" Content="Recipe Title:" HorizontalAlignment="Left" Margin="277,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.105,-0.231" Width="95" Height="26" Grid.ColumnSpan="3"/>
-        <Label x:Name="YieldLabel" Content="Yield:" HorizontalAlignment="Left" Margin="277,77,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
-        <TextBox x:Name="YieldValueTextBox" HorizontalAlignment="Left" Height="23" Margin="45,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True" Grid.Column="2"/>
-        <Label x:Name="ServingSizeLabel" Content="Serving Size:" HorizontalAlignment="Left" Margin="277,157,0,0" VerticalAlignment="Top" Height="26" Width="84" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="RecipeTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="45,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True" Grid.Column="2"/>
-        <TextBox x:Name="ServingSizeTextBox" HorizontalAlignment="Left" Height="94" Margin="45,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" IsEnabled="False" IsReadOnly="True" Grid.Column="2"/>
-        <Label x:Name="RecipeListLabel" Content="Recipes:" HorizontalAlignment="Left" Margin="38,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.553,1.538" Height="26" Width="53"/>
-        <ListBox x:Name="recipeListBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="537" Margin="38,47,0,0" VerticalAlignment="Top" Width="205" SelectionChanged="recipeListBox_SelectionChanged"/>
-        <Label x:Name="DirectionLabel" Content="Directions:" HorizontalAlignment="Left" Margin="287,305,0,0" VerticalAlignment="Top" Height="26" Width="74" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="DirectionsTextBox" Height="166" Margin="45,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348" Grid.Column="2"/>
-        <Label x:Name="CommentLabel" Content="Comment:" HorizontalAlignment="Left" Margin="277,453,0,0" VerticalAlignment="Top" Height="26" Width="74" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="CommentTextBox" Height="84" Margin="45,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348" Grid.Column="2"/>
-        <Label x:Name="IngredientsLabel" Content="Ingredients:" HorizontalAlignment="Left" Margin="277,548,0,0" VerticalAlignment="Top" Height="26" Width="74" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="IngredientsTextBox" Height="84" Margin="45,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" IsReadOnly="True" HorizontalAlignment="Left" Width="348" Grid.Column="2"/>
-        <Label x:Name="RecipeTypeLabel" Content="Recipe Type:" HorizontalAlignment="Left" Margin="277,631,0,0" VerticalAlignment="Top" Height="26" Width="74" Grid.ColumnSpan="3"/>
-        <TextBox x:Name="RecipeTypeTextBox" HorizontalAlignment="Left" Height="23" Margin="45,634,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsEnabled="False" IsReadOnly="True" Grid.Column="2"/>
-        <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="29,722,0,0" VerticalAlignment="Top" Width="75" Click="exitButton_Click" Grid.Column="2"/>
-        <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Margin="297,722,0,0" VerticalAlignment="Top" Width="75" Click="clearButton_Click" Grid.ColumnSpan="3"/>
-        <Label x:Name="MessageLabel" Content="Message:" HorizontalAlignment="Left" Margin="28,769,0,0" VerticalAlignment="Top" Width="63" Visibility="Hidden"/>
-        <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="123" Margin="96,772,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" IsEnabled="False" Grid.ColumnSpan="3" Visibility="Hidden"/>
-        <Button x:Name="ExceptionalButton" Content="Make it Exceptional" HorizontalAlignment="Left" Margin="65,722,0,0" VerticalAlignment="Top" Width="118" Click="ExceptionalButton_Click"/>
+        <Grid ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="Recipe4DisasterLabel" Content="Recipe Title:" HorizontalAlignment="Left" Margin="277,38,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.105,-0.231" Width="95" Height="26"/>
+            <Label x:Name="YieldLabel" Content="Yield:" HorizontalAlignment="Left" Margin="277,77,0,0" VerticalAlignment="Top" Height="26" Width="44"/>
+            <TextBox x:Name="YieldValueTextBox" HorizontalAlignment="Left" Height="23" Margin="386,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" IsReadOnly="True"/>
+            <Label x:Name="ServingSizeLabel" Content="Serving Size:" HorizontalAlignment="Left" Margin="277,157,0,0" VerticalAlignment="Top" Height="26" Width="84"/>
+            <TextBox x:Name="RecipeTitleTextBox" HorizontalAlignment="Left" Height="23" Margin="386,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" IsReadOnly="True"/>
+            <TextBox x:Name="ServingSizeTextBox" HorizontalAlignment="Left" Height="94" Margin="386,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="348" IsReadOnly="True" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="RecipeListLabel" Content="Recipes:" HorizontalAlignment="Left" Margin="38,21,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.553,1.538" Height="26" Width="53"/>
+            <ListBox x:Name="recipeListBox" ItemsSource="{Binding}" HorizontalAlignment="Left" Height="537" Margin="38,47,0,0" VerticalAlignment="Top" Width="234" SelectionChanged="recipeListBox_SelectionChanged"/>
+            <Label x:Name="DirectionLabel" Content="Directions:" HorizontalAlignment="Left" Margin="287,305,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+            <TextBox x:Name="DirectionsTextBox" Height="166" Margin="386,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="348" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="CommentLabel" Content="Comment:" HorizontalAlignment="Left" Margin="277,453,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+            <TextBox x:Name="CommentTextBox" Height="84" Margin="386,422,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="348" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="IngredientsLabel" Content="Ingredients:" HorizontalAlignment="Left" Margin="277,548,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+            <TextBox x:Name="IngredientsTextBox" Height="84" Margin="386,526,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsReadOnly="True" HorizontalAlignment="Left" Width="348" VerticalScrollBarVisibility="Auto"/>
+            <Label x:Name="RecipeTypeLabel" Content="Recipe Type:" HorizontalAlignment="Left" Margin="277,631,0,0" VerticalAlignment="Top" Height="26" Width="74"/>
+            <TextBox x:Name="RecipeTypeTextBox" HorizontalAlignment="Left" Height="23" Margin="386,634,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="92" IsReadOnly="True"/>
+            <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="370,722,0,0" VerticalAlignment="Top" Width="75" Click="exitButton_Click"/>
+            <Button x:Name="clearButton" Content="Clear" HorizontalAlignment="Left" Margin="297,722,0,0" VerticalAlignment="Top" Width="75" Click="clearButton_Click"/>
+            <Label x:Name="MessageLabel" Content="Message:" HorizontalAlignment="Left" Margin="28,769,0,0" VerticalAlignment="Top" Width="63" Visibility="Hidden"/>
+            <TextBox x:Name="messageTextBox" HorizontalAlignment="Left" Height="123" Margin="96,772,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="336" IsEnabled="False" Visibility="Hidden"/>
+            <Button x:Name="ExceptionalButton" Content="Make it Exceptional" HorizontalAlignment="Left" Margin="65,722,0,0" VerticalAlignment="Top" Width="118" Click="ExceptionalButton_Click"/>
+            <Button x:Name="SearchButton" Content="Search" HorizontalAlignment="Left" Margin="222,722,0,0" VerticalAlignment="Top" Width="75" Click="SearchButton_Click"/>
 
-    </Grid>
+        </Grid>
     </ScrollViewer>
 </Window>

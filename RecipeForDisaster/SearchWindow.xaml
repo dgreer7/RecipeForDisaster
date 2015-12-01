@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Search Window" Height="342" Width="572">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="182,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
-        <Button x:Name="Search_Window" Content="Search" HorizontalAlignment="Left" Margin="241,181,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="searchTextBox" HorizontalAlignment="Left" Height="23" Margin="182,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204"/>
+        <Button x:Name="Search_Window" Content="Search" HorizontalAlignment="Left" Margin="182,187,0,0" VerticalAlignment="Top" Width="75" Click="Search_Window_Click"/>
         <Label Content="Please enter keywords here. If more then one&#xD;&#xA; keyword is used, separate by a comma." HorizontalAlignment="Left" Margin="162,78,0,0" VerticalAlignment="Top" Width="260" Height="59" HorizontalContentAlignment="Center"/>
+        <Button x:Name="cancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="300,187,0,0" VerticalAlignment="Top" Width="75" Click="cancelButton_Click"/>
 
     </Grid>
 </Window>
