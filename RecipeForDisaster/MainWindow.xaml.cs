@@ -60,7 +60,9 @@ namespace RecipeForDisaster
             try
             {
                 InitializeComponent();
-                
+                List<string> recipeTitles = (from rec in Recipes.Recipes
+                                             select rec.Title).ToList();
+                recipeListBox.DataContext = recipeTitles;
 
                 //recipeListBox.Items.Add(recipe1.RecipeName);
                 //recipeListBox.Items.Add(recipe2.RecipeName);
