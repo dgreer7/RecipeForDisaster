@@ -17,9 +17,7 @@ namespace RecipeForDisaster
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Recipe> MasterRecipesList = new List<Recipe>();
-
-        RecipeOrganizerEntities Recipes = new RecipeOrganizerEntities();
+        private Recipes recipes = new Recipes();
        
         private const int GWL_STYLE = -16;
         private const int WS_SYSMENU = 0x80000;
@@ -33,7 +31,6 @@ namespace RecipeForDisaster
             try
             {
                 InitializeComponent();
-                CreateMasterList();
                 PopulateRecipeListBox();
             }
             catch (Exception ex)
@@ -47,20 +44,15 @@ namespace RecipeForDisaster
 
         private void PopulateRecipeListBox()
         {
-            List<string> recipeTitles = (from rec in MasterRecipesList
+            List<string> recipeTitles = (from rec in recipes.MasterRecipesList
                 select rec.Title).ToList();
             recipeListBox.DataContext = recipeTitles;
-        }
 
-        private void CreateMasterList()
-        {
-            MasterRecipesList = (from rec in Recipes.Recipes
-                select rec).ToList();
         }
 
         private void DisplayRecipe(string title)
         {
-            Recipe recipe = (from rec in MasterRecipesList
+            Recipe recipe = (from rec in recipes.MasterRecipesList
                              where rec.Title == title
                                     select rec).First();
             
@@ -134,7 +126,7 @@ namespace RecipeForDisaster
             {
                 List<Recipe> refindRecipes = new List<Recipe>();
 
-                foreach (var recipe in MasterRecipesList)
+                foreach (var recipe in recipes.MasterRecipesList)
                 {
                     string recipeString;
                     List<string> keywords = new List<string>();
