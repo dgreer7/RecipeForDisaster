@@ -10,6 +10,7 @@ namespace RecipeForDisaster
         public SearchWindow()
         {
             InitializeComponent();
+            searchTextBox.Focus();
         }
         public string RequestKeywords 
         {

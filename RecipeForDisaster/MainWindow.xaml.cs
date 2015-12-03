@@ -34,9 +34,7 @@ namespace RecipeForDisaster
             {
                 InitializeComponent();
                 CreateMasterList();
-                List<string> recipeTitles = (from rec in MasterRecipesList
-                    select rec.Title).ToList();
-                recipeListBox.DataContext = recipeTitles;
+                PopulateRecipeListBox();
             }
             catch (Exception ex)
             {
@@ -45,6 +43,13 @@ namespace RecipeForDisaster
                 messageTextBox.Text = ex.Message;
             }
 
+        }
+
+        private void PopulateRecipeListBox()
+        {
+            List<string> recipeTitles = (from rec in MasterRecipesList
+                select rec.Title).ToList();
+            recipeListBox.DataContext = recipeTitles;
         }
 
         private void CreateMasterList()
@@ -100,11 +105,12 @@ namespace RecipeForDisaster
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
             ClearTextBoxes(Recipe4DisasterForm);
+            PopulateRecipeListBox();
         }
 
         private void recipeListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DisplayRecipe(recipeListBox.SelectedItem.ToString());
+            if (recipeListBox.SelectedItem != null) DisplayRecipe(recipeListBox.SelectedItem.ToString());
         }
 
         private void Recipe4DisasterForm_Loaded(object sender, RoutedEventArgs e)
@@ -126,6 +132,8 @@ namespace RecipeForDisaster
             SearchWindow searchWindow = new SearchWindow();
             if (searchWindow.ShowDialog() == true)
             {
+                List<Recipe> refindRecipes = new List<Recipe>();
+
                 foreach (var recipe in MasterRecipesList)
                 {
                     string recipeString;
@@ -134,8 +142,16 @@ namespace RecipeForDisaster
                     keywords = rawtext.Split(',').ToList();
                     RecipeToString recipeToString = new RecipeToString();
                     recipeString = recipeToString.Convert(recipe);
-                    //findObj.KeywordMatcher(, recipeString);
+                    
+                    if (findObj.KeywordMatcher(keywords, recipeString))
+                    {
+                        refindRecipes.Add(recipe);
+                    }
                 }
+
+                List<string> refinedRecipeTitles = (from rec in refindRecipes
+                    select rec.Title).ToList();
+                recipeListBox.DataContext = refinedRecipeTitles;
             }
          }
      }
