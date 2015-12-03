@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DesertItem.cs" />
+    <Compile Include="MealItem.cs" />
+    <Compile Include="Recipes.cs" />
     <Compile Include="Recipes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
